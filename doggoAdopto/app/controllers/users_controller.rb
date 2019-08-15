@@ -1,19 +1,19 @@
 class UsersController < ApplicationController
-    
-    def index 
+
+    def index
         @users = User.all
-        render json: @users 
+        render json: @users, except: [:created_at, :updated_at]
     end
-    
+
     def show
         @user = User.find_by(id: params[:id])
-        render json: @user
-    end 
+        render json: @user, except: [:created_at, :updated_at]
+    end
 
     def new
         @user = User.new
-        render json: @user
-    end 
+        render json: @user, except: [:created_at, :updated_at]
+    end
 
     def create
         @user = User.create(
@@ -22,6 +22,11 @@ class UsersController < ApplicationController
             age: params[:age],
             password: params[:password]
         )
-        render json: @user    
+        render json: @user, except: [:created_at, :updated_at]
     end
-end 
+
+    def destroy
+      @user = User.find(params[:id])
+      @user.destroy
+    end
+end
