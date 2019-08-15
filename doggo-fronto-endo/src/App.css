@@ -2,3 +2,14 @@ html {
   text-align: center;
   background-color: #96C0B7;
 }
+
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
