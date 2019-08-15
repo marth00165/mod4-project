@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import "../App.css";
-
+const API = `http://localhost:3000/users`
 
 export default class LoginForm extends Component{
 
@@ -8,7 +8,7 @@ export default class LoginForm extends Component{
     username: "",
     password: "",
     name: "",
-    age: undefined
+    age: 0
   }
 
   handleChange = ev => {
@@ -25,11 +25,25 @@ export default class LoginForm extends Component{
 
   }
 
-
+  handleCreate = () =>  {
+    console.log('HI THERE BOBBBBB')
+    fetch (API, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password,
+          name: this.state.name,
+          age: this.state.age
+        })
+    })
+  }
 
   render (){
     return (
-      <div>
+      <div className="Login">
         <div>
         <input onChange = {this.handleChange} name = "name" type = "text" placeholder = "enter name" value = {this.state.name}/>
         </div>
@@ -42,8 +56,10 @@ export default class LoginForm extends Component{
         <div>
         <input onChange = {this.handleChange} name = "password" type = "password" placeholder = "enter password" value = {this.state.password}/>
         </div>
+        <div>
+          <input onClick = {this.handleCreate} type="button" value ="Create User"/> 
+        </div>
       </div>
      );
-
   }
 }
