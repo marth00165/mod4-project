@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import DogContainer from './Containers/DogContainer'
+import DoginPage from './Containers/DoginPage'
+
 import './App.css';
 
 const breedsAPI = "https://dog.ceo/api/breeds/list/all"
@@ -39,6 +41,7 @@ class App extends Component {
     return (
       <div>
         <DogContainer dogs={this.state.dogs}/>
+        <DoginPage />
 
       </div>
     )
