@@ -1,10 +1,11 @@
 class User < ApplicationRecord
-  has_many :pets, through :user_pets
+  has_many :user_pets
+  has_many :pets, through: :user_pets
 
   validates :name, presence: true
-  validates :at_least_18
+  validate  :at_least_18
   validates :username, {presence: true, uniqueness:true}
-  validates :password_digest
+  validate  :password_digest
   has_secure_password
 
   def at_least_18

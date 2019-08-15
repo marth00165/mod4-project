@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import DogContainer from './Containers/DogContainer'
+import Dogin from './Containers/Dogin'
 import './App.css';
 
 const breedsAPI = "https://dog.ceo/api/breeds/list/all"
