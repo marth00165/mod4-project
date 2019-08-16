@@ -26,7 +26,7 @@ export default class LoginForm extends Component{
   }
 
   handleCreate = () =>  {
-    console.log('HI THERE BOBBBBB')
+
     fetch (API, {
         method: 'POST',
         headers: {
@@ -45,21 +45,21 @@ export default class LoginForm extends Component{
     return (
       <div className="Login">
         <h2>This is Doggo Adopto</h2>
-        <div>
-        <input onChange = {this.handleChange} name = "name" type = "text" placeholder = "enter name" value = {this.state.name}/>
-        </div>
-        <div>
-        <input  onChange = {this.handleChange} name = "username" type = "text" placeholder = "enter username" value = {this.state.username}/>
-        </div>
-        <div>
-        <input  onChange = {this.handleChange} name = "age" type = "number" placeholder = "enter age" value = {this.state.age}/>
-        </div>
-        <div>
-        <input onChange = {this.handleChange} name = "password" type = "password" placeholder = "enter password" value = {this.state.password}/>
-        </div>
-        <div>
-          <input onClick = {this.handleCreate} type="button" value ="Create User"/> 
-        </div>
+          <div>
+            <input onChange = {this.handleChange} name = "name" type = "text" placeholder = "enter name" value = {this.state.name}/>
+          </div>
+          <div>
+            <input onChange = {this.handleChange} name = "username" type = "text" placeholder = "enter username" value = {this.state.username}/>
+          </div>
+          <div>
+            <input onChange = {this.handleChange} name = "age" type = "number" placeholder = "enter age" value = {this.state.age}/>
+          </div>
+          <div>
+            <input onChange = {this.handleChange} name = "password" type = "password" placeholder = "enter password" value = {this.state.password}/>
+          </div>
+          <div>
+            <input onClick = {this.handleCreate} type="button" value ="Create User"/>
+          </div>
       </div>
      );
   }
