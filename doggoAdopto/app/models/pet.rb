@@ -1,6 +1,4 @@
 class Pet < ApplicationRecord
-  has_many :user_pets
-  has_many :users, through: :user_pets
-
+  belongs_to :user
   validates :name, presence: true
 end

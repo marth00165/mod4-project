@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  has_many :user_pets, dependent: :destroy
-  has_many :pets, through: :user_pets
+  has_many :pet
 
   validates :name, presence: true
   validate :at_least_18
