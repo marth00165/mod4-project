@@ -11,7 +11,7 @@ export default class DogContainer extends React.Component {
 
     return (
     <div className="mainContainer">
-      {dogs.map(dog => <DogCard key = {dogs.indexOf(dog)} dog = {dog}/>)}
+      {dogs.map(dog => <DogCard key = {dogs.indexOf(dog)} dog = {dog} imageAPI={this.props.imageAPI}/>)}
      </div>
      )
    }

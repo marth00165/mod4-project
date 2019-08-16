@@ -40,7 +40,7 @@ class App extends Component {
 
     return (
       <div>
-        <DogContainer dogs={this.state.dogs}/>
+        <DogContainer dogs={this.state.dogs} imageAPI={imageAPI}/>
         <DoginPage />
 
       </div>
