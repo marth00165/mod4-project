@@ -7,8 +7,8 @@ export default class DogCard extends React.Component {
     let dog = this.props.dog
     console.log(dog)
     return(
-    <div >
-
+    <div className='dogCard' >
+      
     </div>
 
   )

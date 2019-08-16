@@ -13,13 +13,8 @@ export default class DoginPage extends Component {
 
   render(){
     return(
-      <div>
-
-      <LoginForm handleChange = {this.handleChange} />
-
-
-
-
+      <div className="mainContainer">
+        <LoginForm handleChange = {this.handleChange} />
       </div>
     )
   }

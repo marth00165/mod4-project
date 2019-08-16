@@ -44,6 +44,7 @@ export default class LoginForm extends Component{
   render (){
     return (
       <div className="Login">
+        <h2>This is Doggo Adopto</h2>
         <div>
         <input onChange = {this.handleChange} name = "name" type = "text" placeholder = "enter name" value = {this.state.name}/>
         </div>

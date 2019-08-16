@@ -10,8 +10,7 @@ export default class DogContainer extends React.Component {
     let dogs = Object.keys(allDogs)
 
     return (
-
-      <div>
+    <div className="mainContainer">
       {dogs.map(dog => <DogCard key = {dogs.indexOf(dog)} dog = {dog}/>)}
      </div>
      )
