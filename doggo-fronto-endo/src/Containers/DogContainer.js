@@ -1,18 +1,23 @@
 import React from "react"
 import DogCard from "../Components/DogCard"
+const imageAPI = `https://dog.ceo/api/breed`
+
 
 
 export default class DogContainer extends React.Component {
 
-
   render (){
     let allDogs = this.props.dogs
-    let dogs = Object.keys(allDogs)
+    console.log(allDogs)
+
+
 
     return (
-    <div className="mainContainer">
-      {dogs.map(dog => <DogCard key = {dogs.indexOf(dog)} dog = {dog} imageAPI={this.props.imageAPI}/>)}
-     </div>
+    <div className= "Grid-Column" >
+      <div className="Grid-Row">
+        {allDogs.map(dog => <DogCard key = {allDogs.indexOf(dog)} dog = {dog} />)}
+       </div>
+    </div>
      )
    }
 }

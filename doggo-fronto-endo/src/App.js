@@ -14,33 +14,87 @@ class App extends Component {
     super();
     this.state = {
       dogs: [],
+      allDogs: [],
+      dogPictures: [],
       filters: {
-        breed:"hound"
+        breed:""
       }
     }
   }
 
-  componentDidMount = () => {
-    let breed = this.state.filters.breed
-    fetch (imageAPI + `/${breed}/images`)
-    .then(res => res.json())
-    .then(dogImages => console.log(dogImages))
 
-    fetch(breedsAPI)
-    .then(res => res.json())
-    .then(dogs => {
-      this.setState({
-        dogs: dogs.message
-      })
+
+  dogObjectMaker = (dogs) => {
+
+
+
+  let allDogs = dogs.map(dogName => {
+
+  fetch(`${imageAPI}/${dogName}/images/random`)
+  .then(res => res.json())
+  .then(
+    data => {
+      this.state.dogPictures.push(data.message)
     })
-  }
+
+    let dogIndex = dogs.indexOf(dogName)
+
+  return {
+          name: dogName,
+          image_url: ""
+         }
+      })
+
+
+
+
+
+    console.log(this.state.dogPictures)
+
+
+  this.setState({
+    allDogs: allDogs
+  })
+
+   console.log(this.state.allDogs)
+
+
+}
+
+
+
+componentDidMount = () => {
+
+
+  fetch(breedsAPI)
+  .then(res => res.json())
+  .then(dogs => {
+    return this.setState({
+      dogs: [...Object.keys(dogs.message)]
+    })}).then(
+      () => this.dogObjectMaker(this.state.dogs)
+  )
+
+
+  console.log(this.state.dogPictures)
+
+
+}
+
+
+
+
+
+
 
 
   render () {
 
+
+
     return (
       <div>
-        <DogContainer dogs={this.state.dogs} imageAPI={imageAPI}/>
+        <DogContainer dogs={this.state.allDogs} />
         <DoginPage />
 
       </div>
