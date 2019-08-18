@@ -17,6 +17,18 @@ class App extends Component {
     };
   }
 
+// Write the search functions here
+
+/*
+Essentially make a search value in the state update it using a function then pass
+the update search value down to the dog container.. Inside the dog container You will
+then proceed to filter the allDogs array Based on the search value!
+
+
+Think About Controller Inputs and how to change them!
+*/
+
+//making a dog object here for the cards later
   getDogObject = async dogName => {
     const response = await fetch(`${imageAPI}/${dogName}/images/random`);
     const json = await response.json();
@@ -26,6 +38,7 @@ class App extends Component {
     };
   };
 
+//this is getting the information for the object
   dogObjectMaker = async dogs => {
     const allDogs = await Promise.all(
       dogs.map(async dogName => await this.getDogObject(dogName))
@@ -35,6 +48,8 @@ class App extends Component {
       allDogs: allDogs
     });
   };
+
+  //creating the initial array and fetches for other functions
 
   componentDidMount = () => {
     fetch(breedsAPI)
@@ -48,11 +63,12 @@ class App extends Component {
     console.log(this.state.dogPictures);
   };
 
+//rendering the container and login page/signup page.. might need to add router to load the appropriate content
   render() {
     return (
       <div>
         <input type = "text" placeholder = "make this a searchbar" onChange = {console.log("Write an On Change Function!")}/>
-        <DogContainer dogs={this.state.allDogs} />
+        <DogContainer search = "Pass in the Search Value here" dogs={this.state.allDogs} />
         <DoginPage />
       </div>
     );
