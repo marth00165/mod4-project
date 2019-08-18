@@ -12,8 +12,8 @@ const DogCard  = props => {
 
     return(
     <div className='dogCard' >
-      <h2></h2>
-      <h3></h3>
+      <h2>{dog.name}</h2>
+      <h3>{dog.image_url}</h3>
 
 
 
