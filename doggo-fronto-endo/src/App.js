@@ -13,10 +13,7 @@ class App extends Component {
     this.state = {
       dogs: [],
       allDogs: [],
-      dogPictures: [],
-      filters: {
-        breed: ""
-      }
+      dogPictures: []
     };
   }
 
@@ -54,6 +51,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <input type = "text" placeholder = "make this a searchbar" onChange = {console.log("Write an On Change Function!")}/>
         <DogContainer dogs={this.state.allDogs} />
         <DoginPage />
       </div>

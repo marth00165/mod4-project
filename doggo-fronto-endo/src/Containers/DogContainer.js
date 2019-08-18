@@ -7,7 +7,8 @@ const imageAPI = `https://dog.ceo/api/breed`
 export default class DogContainer extends React.Component {
 
   render (){
-    let allDogs = this.props.dogs
+    let search = ""
+    let allDogs = this.props.dogs // how will you filter this array?
     console.log(allDogs)
 
 
