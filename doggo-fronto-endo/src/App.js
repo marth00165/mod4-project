@@ -14,14 +14,21 @@ class App extends Component {
       dogs: [],
       allDogs: [],
       dogPictures: [],
-      filters: {
-        breed: ""
-      }
+      search: ""
     };
   }
 
+  updateSearch = (ev) => {
+    let search = ev.target.value
+    this.setState({
+      search: search.toLowerCase()
+    })
+    console.log(search)
+
+  }
+
   getDogObject = async dogName => {
-    const response = await fetch(`${imageAPI}/${dogName}/images/random`);
+    const response = await fetch(`${imageAPI}/${dogName}/images/random/4`);
     const json = await response.json();
     return {
       name: dogName,
@@ -48,13 +55,18 @@ class App extends Component {
         });
       })
       .then(() => this.dogObjectMaker(this.state.dogs));
-    console.log(this.state.dogPictures);
+
   };
 
   render() {
     return (
       <div>
-        <DogContainer dogs={this.state.allDogs} />
+        <div>
+          <input type="text" placeholder="Enter Dog Breed" onChange ={this.updateSearch} />
+        </div>
+        <br/>
+        <br/>
+        <DogContainer search = {this.state.search} dogs={this.state.allDogs} />
         <DoginPage />
       </div>
     );

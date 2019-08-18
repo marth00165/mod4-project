@@ -6,9 +6,19 @@ const imageAPI = `https://dog.ceo/api/breed`
 
 export default class DogContainer extends React.Component {
 
+
+
+
   render (){
-    let allDogs = this.props.dogs
-    console.log(allDogs)
+    let search = this.props.search
+    let allDogs = this.props.dogs.filter(
+      (dog) => {
+        return  dog.name.indexOf(search) != -1;
+      }
+    )
+
+
+
 
 
 
