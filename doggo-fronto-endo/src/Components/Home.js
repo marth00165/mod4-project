@@ -18,6 +18,10 @@ class Home extends Component {
     };
   }
 
+  logOut = () => {
+    this.props.history.push("/")
+  }
+
   updateSearch = (ev) => {
     let search = ev.target.value
     this.setState({
@@ -76,7 +80,7 @@ render() {
           <h1>Hello {this.state.user}</h1>
         </div>
         <div>
-          <button>Logout</button>
+          <button onClick = {this.logOut}>Logout</button>
         </div>
         <br/>
         <br/>
