@@ -1,51 +1,29 @@
 import React from "react"
 
-
-
 const DogCard  = props => {
+  const dogAPI = 'http://localhost3000/pets'
 
   const {dog} = props;
 
-  /*
-     The Dog Object is set up like so
-
-     dog = {
-
-     name: dog name,
-     image_url: "https://Dogimageurl.com/"
-   }
-
-
-   so like if you want the dog name for example you would just say {dog.name}
-
-
-
-  */
-
-// create the dog cards here make some buttons that will show the info and another button to add the dog
-// don't worry about the click functionality yet just have buttons appear for now
-
-
-
+  const handleClick = (props) => {
+    console.log(dog.name)
+  }
 
     return(
     <div className='dogCard' >
-
-
-      <img src = "Dog Image Url goes Here"/>
-      <h2>{"dog name"}</h2>
-
       <div>
-        <button>Add Dog</button>
+        <h2>{String(dog.name).toUpperCase()}</h2>
       </div>
-
-
+      <div>
+        <img src={dog.image_url[0]} />
+        <img src={dog.image_url[1]} />
+        <img src={dog.image_url[2]} />
+      </div>
+      <div>
+        <button onClick={props.handleClick}>More Info</button>
+      </div>
     </div>
-
   )
-
-
-
 }
 
 export default DogCard

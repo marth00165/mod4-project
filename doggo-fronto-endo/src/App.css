@@ -4,13 +4,26 @@ html {
 }
 
 @media all and (min-width: 480px) {
-  .Login {
-    padding: 60px 0;
-  }
 
-  .mainContainer {
-    
-    margin: 0 auto;
-    max-width: 320px;
-  }
+.Login, .SignIn {
+  border-bottom: 5px #FEF6C9 dotted;
+  padding: 60px 0;
+}
+
+.Login {
+  border-top: 5px #FEF6C9 dotted;
+}
+
+.mainContainer {
+  background: #586F7C;
+  margin: 0 auto;
+  max-width: 320px;
+}
+
+}
+
+img {
+  border: 5px #FEF6C9 solid;
+  width: 250px;
+  height: 250px;
 }
