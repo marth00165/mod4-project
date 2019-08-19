@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import DogContainer from "./Containers/DogContainer";
-import DoginPage from "./Containers/DoginPage"
+import DoginPage from "./Containers/DoginPage";
+import Header from "./Components/Header";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "./App.css";
 
 const breedsAPI = "https://dog.ceo/api/breeds/list/all";
@@ -30,7 +31,7 @@ Think About Controller Inputs and how to change them!
 
 //making a dog object here for the cards later
   getDogObject = async dogName => {
-    const response = await fetch(`${imageAPI}/${dogName}/images/random`);
+    const response = await fetch(`${imageAPI}/${dogName}/images/random/2`);
     const json = await response.json();
     return {
       name: dogName,
@@ -66,13 +67,18 @@ Think About Controller Inputs and how to change them!
 //rendering the container and login page/signup page.. might need to add router to load the appropriate content
   render() {
     return (
-      <div>
-        <input type = "text" placeholder = "make this a searchbar" onChange = {console.log("Write an On Change Function!")}/>
-        <DogContainer search = "Pass in the Search Value here" dogs={this.state.allDogs} />
-        <DoginPage />
-      </div>
-    );
-  }
+        <Router>
+          <div>
+            <Route path='/dogs' render={props => (
+                <React.Fragment>
+                  <DogContainer dogs={this.state.allDogs}/>
+                </React.Fragment>
+            )}/>
+            <Route exact path='/' component={DoginPage} />  
+          </div>
+        </Router>
+      )
+    }
 }
 
 export default App;
