@@ -39,11 +39,6 @@ export default class DogContainer extends React.Component {
       }
     )
 
-
-
-
-
-
     return (
     <div className= "Grid-Column" >
       <div className="Grid-Row">

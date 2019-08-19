@@ -1,10 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import DogContainer from "../Containers/DogContainer";
 import DoginPage from "../Containers/DoginPage";
-import jwtDecode from 'jwt-decode';
+import jwtDecode from "jwt-decode";
 const breedsAPI = "https://dog.ceo/api/breeds/list/all";
 const imageAPI = `https://dog.ceo/api/breed`;
-
 
 class Home extends Component {
   constructor() {
@@ -22,17 +21,15 @@ class Home extends Component {
 
 
   logOut = () => {
-    this.props.history.push("/")
-  }
+    this.props.history.push("/");
+  };
 
-  updateSearch = (ev) => {
-    let search = ev.target.value
+  updateSearch = ev => {
+    let search = ev.target.value;
     this.setState({
       search: search.toLowerCase()
-    })
-    console.log(search)
-
-  }
+    });
+  };
 
   getDogObject = async dogName => {
     const response = await fetch(`${imageAPI}/${dogName}/images/random/4`);
@@ -62,7 +59,6 @@ class Home extends Component {
     })
     console.log(result)
 
-
     fetch(breedsAPI)
       .then(res => res.json())
       .then(dogs => {
@@ -71,27 +67,30 @@ class Home extends Component {
         });
       })
       .then(() => this.dogObjectMaker(this.state.dogs));
-
   };
 
-render() {
+  render() {
     return (
       <div>
         <div>
-          <input type="text" placeholder="Enter Dog Breed" onChange ={this.updateSearch} />
+          <input
+            type="text"
+            placeholder="Enter Dog Breed"
+            onChange={this.updateSearch}
+          />
         </div>
         <div>
           <h1>Hello {this.state.user_name}</h1>
         </div>
         <div>
-          <button onClick = {this.logOut}>Logout</button>
+          <button onClick={this.logOut}>Logout</button>
         </div>
         <br/>
         <br/>
         <DogContainer userID = {this.state.userID} user_name = {this.state.user_name} search = {this.state.search} dogs={this.state.allDogs} />
       </div>
-    )
+    );
   }
-};
+}
 
 export default Home;
