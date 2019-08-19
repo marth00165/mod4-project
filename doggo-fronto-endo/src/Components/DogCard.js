@@ -1,26 +1,51 @@
 import React from "react"
 
 
-export default class DogCard extends React.Component {
 
-componentDidMount = () => {
-  let imageAPI = this.props.imageAPI
-  let dog = this.props.dog
-  fetch (imageAPI + `/${dog}/images`)
-  .then(res => res.json())
-  .then(dogImages => console.log(dogImages))
-}
+const DogCard  = props => {
 
-  render(){
+  const {dog} = props;
+
+  /*
+     The Dog Object is set up like so
+
+     dog = {
+
+     name: dog name,
+     image_url: "https://Dogimageurl.com/"
+   }
+
+
+   so like if you want the dog name for example you would just say {dog.name}
+
+
+
+  */
+
+// create the dog cards here make some buttons that will show the info and another button to add the dog
+// don't worry about the click functionality yet just have buttons appear for now
+
+
+
+
     return(
     <div className='dogCard' >
-      <h2>{this.props.dog}</h2>
-      
+
+
+      <img src = "Dog Image Url goes Here"/>
+      <h2>{"dog name"}</h2>
+
+      <div>
+        <button>Add Dog</button>
+      </div>
+
+
     </div>
 
   )
 
 
-  }
 
 }
+
+export default DogCard

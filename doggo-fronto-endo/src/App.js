@@ -1,52 +1,78 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
-import DogContainer from './Containers/DogContainer'
-import DoginPage from './Containers/DoginPage'
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import DogContainer from "./Containers/DogContainer";
+import DoginPage from "./Containers/DoginPage"
+import "./App.css";
 
-import './App.css';
-
-const breedsAPI = "https://dog.ceo/api/breeds/list/all"
-const imageAPI = `https://dog.ceo/api/breed`
+const breedsAPI = "https://dog.ceo/api/breeds/list/all";
+const imageAPI = `https://dog.ceo/api/breed`;
 
 class App extends Component {
-
-  constructor(){
+  constructor() {
     super();
     this.state = {
       dogs: [],
-      filters: {
-        breed:"hound"
-      }
-    }
+      allDogs: [],
+      dogPictures: []
+    };
   }
+
+// Write the search functions here
+
+/*
+Essentially make a search value in the state update it using a function then pass
+the update search value down to the dog container.. Inside the dog container You will
+then proceed to filter the allDogs array Based on the search value!
+
+
+Think About Controller Inputs and how to change them!
+*/
+
+//making a dog object here for the cards later
+  getDogObject = async dogName => {
+    const response = await fetch(`${imageAPI}/${dogName}/images/random`);
+    const json = await response.json();
+    return {
+      name: dogName,
+      image_url: json.message
+    };
+  };
+
+//this is getting the information for the object
+  dogObjectMaker = async dogs => {
+    const allDogs = await Promise.all(
+      dogs.map(async dogName => await this.getDogObject(dogName))
+    );
+
+    this.setState({
+      allDogs: allDogs
+    });
+  };
+
+  //creating the initial array and fetches for other functions
 
   componentDidMount = () => {
-    let breed = this.state.filters.breed
-    fetch (imageAPI + `/${breed}/images`)
-    .then(res => res.json())
-    .then(dogImages => console.log(dogImages))
-
     fetch(breedsAPI)
-    .then(res => res.json())
-    .then(dogs => {
-      this.setState({
-        dogs: dogs.message
+      .then(res => res.json())
+      .then(dogs => {
+        return this.setState({
+          dogs: [...Object.keys(dogs.message)]
+        });
       })
-    })
-  }
+      .then(() => this.dogObjectMaker(this.state.dogs));
+    console.log(this.state.dogPictures);
+  };
 
-
-  render () {
-
+//rendering the container and login page/signup page.. might need to add router to load the appropriate content
+  render() {
     return (
       <div>
-        <DogContainer dogs={this.state.dogs} imageAPI={imageAPI}/>
+        <input type = "text" placeholder = "make this a searchbar" onChange = {console.log("Write an On Change Function!")}/>
+        <DogContainer search = "Pass in the Search Value here" dogs={this.state.allDogs} />
         <DoginPage />
-
       </div>
-    )
+    );
   }
-
 }
 
 export default App;
