@@ -5,10 +5,7 @@ import React from "react"
 
 const DogCard  = props => {
 
-  const {dog} = props;
-
-  const clickHandler = () => {}
-
+  const {dog, user_name, userID, addDog} = props;
 
 
 
@@ -23,7 +20,7 @@ const DogCard  = props => {
             {dog.name}
           </div>
           <div>
-            <button onClick = {() => console.log("Use a callback function or pass it down as props?")}>Add Dog</button>
+            <button onClick = {() => addDog(dog,userID)}>Add Dog</button>
             <button onClick = {() => console.log("Use a callback function or pass it down as props?")}>More Info</button>
           </div>
     </div>

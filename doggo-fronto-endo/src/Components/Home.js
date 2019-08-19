@@ -14,9 +14,12 @@ class Home extends Component {
       allDogs: [],
       dogPictures: [],
       search: "" ,
-      user: undefined
+      user_name: undefined,
+      userID:undefined
     };
   }
+
+
 
   logOut = () => {
     this.props.history.push("/")
@@ -54,7 +57,8 @@ class Home extends Component {
     let jwt = window.localStorage.getItem("jwt");
     let result = jwtDecode(jwt);
     this.setState({
-      user: result.name
+      user_name: result.name,
+      userID: result.id
     })
     console.log(result)
 
@@ -77,14 +81,14 @@ render() {
           <input type="text" placeholder="Enter Dog Breed" onChange ={this.updateSearch} />
         </div>
         <div>
-          <h1>Hello {this.state.user}</h1>
+          <h1>Hello {this.state.user_name}</h1>
         </div>
         <div>
           <button onClick = {this.logOut}>Logout</button>
         </div>
         <br/>
         <br/>
-        <DogContainer search = {this.state.search} dogs={this.state.allDogs} />
+        <DogContainer userID = {this.state.userID} user_name = {this.state.user_name} search = {this.state.search} dogs={this.state.allDogs} />
       </div>
     )
   }
