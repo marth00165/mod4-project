@@ -7,19 +7,6 @@ const DogCard  = props => {
 
   const {dog} = props;
 
-  /*
-
-  dog object looks like this
-
-  {
-
-  name : dog name,
-  image_url: the image url
-}
-
-  */
-
-
   const clickHandler = () => {}
 
 
@@ -36,8 +23,8 @@ const DogCard  = props => {
             {dog.name}
           </div>
           <div>
-            <button onClick = {() => console.log("Use a callback function or pass it down as props?")}>This Button will add a dog to the owner</button>
-            <button onClick = {() => console.log("Use a callback function or pass it down as props?")}>This Button will give more info about the dog</button>
+            <button onClick = {() => console.log("Use a callback function or pass it down as props?")}>Add Dog</button>
+            <button onClick = {() => console.log("Use a callback function or pass it down as props?")}>More Info</button>
           </div>
     </div>
 
