@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import "../App.css";
+import DogCard from "./DogCard";
 const API = `http://localhost:3000/users`
 
 export default class LoginForm extends Component{
@@ -39,6 +40,10 @@ export default class LoginForm extends Component{
           age: this.state.age
         })
     })
+    return(
+      <DogCard />
+    )
+
   }
 
   render (){

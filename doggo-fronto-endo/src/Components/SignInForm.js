@@ -18,10 +18,9 @@ export default class SignInForm extends Component{
    }
   }
 
-//   handleFetch =()=> {
-//       //this is our fetch
-//       fetch(API).then(res => res.json()).then(user => console.log(user))
-//   }
+  handleSignIn = () => {
+    this.props.history.push('/dogs')
+  }
 
   render (){
     return (
@@ -34,7 +33,7 @@ export default class SignInForm extends Component{
             <input onChange = {this.handleChange} name = "password" type = "password" placeholder = "enter password" value = {this.state.password}/>
           </div>
           <div>
-            <input onClick = {this.handleCreate} type="button" value ="Login"/>
+            <input onClick = {this.handleSignIn} type="button" value ="Login"/>
           </div>
       </div>
      );
