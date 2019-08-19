@@ -23,9 +23,6 @@ export default class DogContainer extends React.Component {
         user_id:userID
       })
     })
-
-    console.log("dog is posted")
-
   }
 
 

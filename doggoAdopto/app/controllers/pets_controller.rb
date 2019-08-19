@@ -15,8 +15,6 @@ class PetsController < ApplicationController
   end
 
   def create
-
-
     @pet = Pet.create(name: params[:name], breed: params[:breed], desc: params[:desc], image_url: params[:image_url], user_id: params[:user_id])
     render json: @pet, except: [:created_at, :updated_at]
   end

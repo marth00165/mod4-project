@@ -23,6 +23,7 @@ class Home extends Component {
 
   logOut = () => {
     this.props.history.push("/")
+    window.localStorage.setItem("jwt", null)
   }
 
   updateSearch = (ev) => {
