@@ -1,19 +1,27 @@
 import React from "react"
 
-
-
 const DogCard  = props => {
+  const dogAPI = 'http://localhost3000/pets'
 
   const {dog} = props;
 
+  const handleClick = (props) => {
+    console.log(dog.name)
+  }
+
     return(
     <div className='dogCard' >
-      <h2>{String(dog.name).toUpperCase()}</h2>
-        <img className='dogePics' src={dog.image_url[0]}/>
-        <img className='dogePics' src={dog.image_url[1]}/>
-        <div>
-          <button>More Info!</button>
-        </div>
+      <div>
+        <h2>{String(dog.name).toUpperCase()}</h2>
+      </div>
+      <div>
+        <img src={dog.image_url[0]} />
+        <img src={dog.image_url[1]} />
+        <img src={dog.image_url[2]} />
+      </div>
+      <div>
+        <button onClick={props.handleClick}>More Info</button>
+      </div>
     </div>
   )
 }

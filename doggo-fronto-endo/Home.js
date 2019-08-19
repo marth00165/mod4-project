@@ -18,18 +18,6 @@ class App extends Component {
     };
   }
 
-// Write the search functions here
-
-/*
-Essentially make a search value in the state update it using a function then pass
-the update search value down to the dog container.. Inside the dog container You will
-then proceed to filter the allDogs array Based on the search value!
-
-
-Think About Controller Inputs and how to change them!
-*/
-
-//making a dog object here for the cards later
   getDogObject = async dogName => {
     const response = await fetch(`${imageAPI}/${dogName}/images/random/2`);
     const json = await response.json();
