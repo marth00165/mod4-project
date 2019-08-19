@@ -10,18 +10,6 @@ import "./App.css";
 
 class App extends Component {
 
-// Write the search functions here
-
-/*
-Essentially make a search value in the state update it using a function then pass
-the update search value down to the dog container.. Inside the dog container You will
-then proceed to filter the allDogs array Based on the search value!
-
-
-Think About Controller Inputs and how to change them!
-*/
-
-//rendering the container and login page/signup page.. might need to add router to load the appropriate content
   render() {
     return (
       <div>
@@ -29,7 +17,7 @@ Think About Controller Inputs and how to change them!
         <Switch>
           <Route path = "/" exact component = {HomePage} />
           <Route path = "/signin" exact component = {Signin} />
-          <Route path = "/userHome" exact component = {Home} />
+          <Route path = "/Home" exact component = {Home} />
           <Route path = "/signup" exact component = {DoginPage} />
         </Switch>
       </BrowserRouter>

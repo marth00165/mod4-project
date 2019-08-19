@@ -20,7 +20,7 @@ const DogCard  = props => {
       </div>
       <div>
         <button onClick = {() => addDog(dog,userID)}>Add Dog</button>
-        <button onClick={props.handleClick}>More Info</button>
+        <button onClick={() => this.handleClick(props)}>More Info</button>
       </div>
     </div>
   )
