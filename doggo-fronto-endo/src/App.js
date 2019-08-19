@@ -28,7 +28,6 @@ then proceed to filter the allDogs array Based on the search value!
 Think About Controller Inputs and how to change them!
 */
 
-//making a dog object here for the cards later
   getDogObject = async dogName => {
     const response = await fetch(`${imageAPI}/${dogName}/images/random`);
     const json = await response.json();
@@ -38,7 +37,6 @@ Think About Controller Inputs and how to change them!
     };
   };
 
-//this is getting the information for the object
   dogObjectMaker = async dogs => {
     const allDogs = await Promise.all(
       dogs.map(async dogName => await this.getDogObject(dogName))
