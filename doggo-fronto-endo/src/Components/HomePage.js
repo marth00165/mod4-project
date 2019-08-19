@@ -4,7 +4,8 @@ import React, {Component} from 'react';
 export default class HomePage extends Component {
 
   handleLogin = () => {
-    this.props.history.push("/signin")
+    let signin =  "signin"
+    this.props.history.push(`/${signin}`)
   }
 
   handleSignUp = () => {
