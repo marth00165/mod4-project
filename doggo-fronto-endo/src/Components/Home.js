@@ -12,10 +12,13 @@ class Home extends Component {
       dogs: [],
       allDogs: [],
       dogPictures: [],
-      search: "",
-      user: undefined
+      search: "" ,
+      user_name: undefined,
+      userID:undefined
     };
   }
+
+
 
   logOut = () => {
     this.props.history.push("/");
@@ -51,9 +54,10 @@ class Home extends Component {
     let jwt = window.localStorage.getItem("jwt");
     let result = jwtDecode(jwt);
     this.setState({
-      user: result.name
-    });
-    console.log(result);
+      user_name: result.name,
+      userID: result.id
+    })
+    console.log(result)
 
     fetch(breedsAPI)
       .then(res => res.json())
@@ -76,14 +80,14 @@ class Home extends Component {
           />
         </div>
         <div>
-          <h1>Hello {this.state.user}</h1>
+          <h1>Hello {this.state.user_name}</h1>
         </div>
         <div>
           <button onClick={this.logOut}>Logout</button>
         </div>
-        <br />
-        <br />
-        <DogContainer search={this.state.search} dogs={this.state.allDogs} />
+        <br/>
+        <br/>
+        <DogContainer userID = {this.state.userID} user_name = {this.state.user_name} search = {this.state.search} dogs={this.state.allDogs} />
       </div>
     );
   }

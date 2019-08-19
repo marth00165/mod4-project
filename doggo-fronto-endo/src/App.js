@@ -25,14 +25,14 @@ Think About Controller Inputs and how to change them!
   render() {
     return (
       <div>
-        <BrowserRouter>
-          <Switch>
-            <Route path = "/" exact component = {HomePage} />
-            <Route path = "/signin" exact component = {Signin} />
-            <Route path = "/Home" exact component = {Home} />
-            <Route path = "/signup" exact component = {DoginPage} />
-          </Switch>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Switch>
+          <Route path = "/" exact component = {HomePage} />
+          <Route path = "/signin" exact component = {Signin} />
+          <Route path = "/userHome" exact component = {Home} />
+          <Route path = "/signup" exact component = {DoginPage} />
+        </Switch>
+      </BrowserRouter>
       </div>
     );
   }

@@ -2,8 +2,7 @@ import React from "react"
 
 const DogCard  = props => {
   const dogAPI = 'http://localhost3000/pets'
-
-  const {dog} = props;
+  const {dog, user_name, userID, addDog} = props;
 
   const handleClick = (props) => {
     console.log(dog.name)
@@ -20,6 +19,7 @@ const DogCard  = props => {
         <img src={dog.image_url[2]} />
       </div>
       <div>
+        <button onClick = {() => addDog(dog,userID)}>Add Dog</button>
         <button onClick={props.handleClick}>More Info</button>
       </div>
     </div>

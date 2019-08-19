@@ -15,7 +15,7 @@ export default class HomePage extends Component {
 render(){
   return (
     <div>
-    Hello World!
+    Welcome to Dog Adopter
       <div>
         <button onClick = {this.handleLogin}>Login</button>
         <button onClick = {this.handleSignUp}>SignUp</button>
