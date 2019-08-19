@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
 import logo from "./logo.svg";
-import DogContainer from "./Containers/DogContainer";
-import DoginPage from "./Containers/DoginPage"
-import "./App.css";
+import Home from "./Components/Home";
+import HomePage from "./Components/HomePage"
+import Signin from "./Components/Signin";
+import DoginPage from "./Containers/DoginPage";
 
-const breedsAPI = "https://dog.ceo/api/breeds/list/all";
-const imageAPI = `https://dog.ceo/api/breed`;
+import "./App.css";
 
 class App extends Component {
   constructor() {
@@ -37,34 +38,18 @@ Think About Controller Inputs and how to change them!
     };
   };
 
-  dogObjectMaker = async dogs => {
-    const allDogs = await Promise.all(
-      dogs.map(async dogName => await this.getDogObject(dogName))
-    );
-
-    this.setState({
-      allDogs: allDogs
-    });
-  };
-
-  //creating the initial array and fetches for other functions
-
-  componentDidMount = () => {
-    fetch(breedsAPI)
-      .then(res => res.json())
-      .then(dogs => {
-        return this.setState({
-          dogs: [...Object.keys(dogs.message)]
-        });
-      })
-      .then(() => this.dogObjectMaker(this.state.dogs));
-    console.log(this.state.dogPictures);
-  };
-
 //rendering the container and login page/signup page.. might need to add router to load the appropriate content
   render() {
     return (
       <div>
+      <BrowserRouter>
+        <Switch>
+          <Route path = "/" exact component = {HomePage} />
+          <Route path = "/signin" exact component = {Signin} />
+          <Route path = "/userHome" exact component = {Home} />
+          <Route path = "/signup" exact component = {DoginPage} />
+        </Switch>
+      </BrowserRouter>
         <input type = "text" placeholder = "make this a searchbar" onChange = {console.log("Write an On Change Function!")}/>
         <DogContainer search = "Pass in the Search Value here" dogs={this.state.allDogs} />
         <DoginPage />

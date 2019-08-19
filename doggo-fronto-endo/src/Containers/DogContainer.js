@@ -6,12 +6,19 @@ const imageAPI = `https://dog.ceo/api/breed`
 
 export default class DogContainer extends React.Component {
 
+
+
+
   render (){
+    let search = this.props.search
+    let allDogs = this.props.dogs.filter(
+      (dog) => {
+        return  dog.name.indexOf(search) != -1;
+      }
+    )
     let search = "" // what value should go here? think props!
     let allDogs = this.props.dogs // how will you filter this array?
     console.log(allDogs)
-
-
 
     return (
     <div className= "Grid-Column" >
