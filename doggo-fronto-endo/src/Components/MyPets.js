@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Pets from "../Containers/Pets"
 import jwtDecode from 'jwt-decode';
 
 export default class Home extends Component {
@@ -14,19 +15,16 @@ export default class Home extends Component {
     fetch(`http://localhost:3000/users/${user_id}`)
       .then(res => res.json())
       .then(json => {
-        console.log(json.dogs[0].name)
         this.setState({
           myDogs: json.dogs
         })
       })
-
   }
 
   render(){
     return(
-      <h1></h1>
+      <Pets myDogs={this.state.myDogs} />
 
     )
   }
-
 }

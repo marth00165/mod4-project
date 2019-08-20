@@ -1,13 +1,8 @@
 import React from "react"
 
-
-
-
 const DogCard  = props => {
 
   const {dog, user_name, userID, addDog} = props;
-
-
 
     return(
     <div className='dogCard' >
@@ -24,11 +19,7 @@ const DogCard  = props => {
             <button onClick = {() => console.log("Use a callback function or pass it down as props?")}>More Info</button>
           </div>
     </div>
-
   )
-
-
-
 }
 
 export default DogCard
