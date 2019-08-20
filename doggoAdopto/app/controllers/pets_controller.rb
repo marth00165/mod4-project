@@ -20,6 +20,7 @@ class PetsController < ApplicationController
   end
 
   def destroy
+    
     @pet = Pet.find(params[:id])
     @pet.destroy
   end

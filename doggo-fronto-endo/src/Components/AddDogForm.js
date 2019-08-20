@@ -31,7 +31,7 @@ export default class AddDogForm extends Component {
         user_id:userID
       })
     })
-    .then(this.props.history.push("/userHome"))
+    .then(this.props.history.push("/mypets"))
   }
 
 
