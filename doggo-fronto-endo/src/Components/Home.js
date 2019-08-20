@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import DogContainer from "../Containers/DogContainer";
 import DoginPage from "../Containers/DoginPage";
+import MyPets from "./MyPets"
 import jwtDecode from 'jwt-decode';
 const breedsAPI = "https://dog.ceo/api/breeds/list/all";
 const imageAPI = `https://dog.ceo/api/breed`;
@@ -90,6 +91,7 @@ render() {
         <br/>
         <br/>
         <DogContainer userID = {this.state.userID} user_name = {this.state.user_name} search = {this.state.search} dogs={this.state.allDogs} />
+        <MyPets userID = {this.state.userID}/>
       </div>
     )
   }
