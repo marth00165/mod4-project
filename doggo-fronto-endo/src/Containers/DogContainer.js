@@ -1,34 +1,35 @@
 import React from "react"
 import DogCard from "../Components/DogCard"
+import {Redirect} from "react-router"
+import AddDogForm from "../Components/AddDogForm"
 const imageAPI = `https://dog.ceo/api/breed`
 const API = `http://localhost:3000/pets`
 
 
 
-export default class DogContainer extends React.Component {
 
+export default class DogContainer extends React.Component {
+ state = {
+   renderForm : false,
+   dog: undefined,
+   userID: undefined
+ }
 
   addDog = (dog, userID) => {
-    // debugger;
-    fetch(API, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        name: "Test Doggo",
-        breed: dog.name,
-        desc: "Good Boy",
-        image_url:dog.image_url[0],
-        user_id:userID
-      })
+
+    this.setState({
+      renderForm: true,
+      dog: dog,
+      userID: userID
     })
+
   }
 
 
 
-
   render (){
+
+
     let search = this.props.search
     let allDogs = this.props.dogs.filter(
       (dog) => {
@@ -42,7 +43,15 @@ export default class DogContainer extends React.Component {
 
 
     return (
+
+
     <div className= "Grid-Column" >
+    {this.state.renderForm? <Redirect  to = {
+      {pathname: "/addDogForm",
+      state: {
+            dog: this.state.dog,
+            userID: this.state.userID
+    }}}/>: null}
       <div className="Grid-Row">
         {allDogs.map(dog => <DogCard addDog = {this.addDog} user_name = {this.props.user_name} userID= {this.props.userID} key = {allDogs.indexOf(dog)} dog = {dog} />)}
        </div>
