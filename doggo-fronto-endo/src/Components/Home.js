@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import DogContainer from "../Containers/DogContainer";
 import DoginPage from "../Containers/DoginPage";
-import MyPets from "./MyPets"
+
 import jwtDecode from 'jwt-decode';
 const breedsAPI = "https://dog.ceo/api/breeds/list/all";
 const imageAPI = `https://dog.ceo/api/breed`;
@@ -92,7 +92,7 @@ render() {
         </div>
         <div>
           <button onClick = {this.logOut}>Logout</button>
-        
+
           <button onClick = {this.userHome}>My Dogs</button>
         </div>
         <br/>

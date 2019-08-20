@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import MyDogCard from "../Components/MyDogCard"
 import {Redirect} from "react-router"
+import jwtDecode from 'jwt-decode';
 const API = `http://localhost:3000/pets`
 
 
@@ -9,14 +10,26 @@ const API = `http://localhost:3000/pets`
 
 class Pets extends Component {
 
-constructor(props){
-  super(props)
-  this.state = {
+state = {
     render: false,
-    mydogs: this.props.myDogs
-  }
-
+    mydogs: []
 }
+
+componentDidMount = () => {
+  let jwt = window.localStorage.getItem("jwt");
+  let result = jwtDecode(jwt);
+  console.log("result", result)
+  let user_id = result.id
+
+  fetch(`http://localhost:3000/users/${user_id}`)
+    .then(res => res.json())
+    .then(json => {
+      this.setState({
+        mydogs: json.dogs
+      })
+    })
+}
+
 
 
 
@@ -41,18 +54,18 @@ constructor(props){
 
 
 
-    let filterDogs = this.props.myDogs.filter(dog => {
+    let filterDogs = this.state.mydogs.filter(dog => {
       return  dog.id != dogID
     })
 
     this.setState({
-      mydogs: filterDogs
+      mydogs: [...filterDogs]
     })
   }
   render(){
     return (
       <div>{
-        this.props.myDogs.map(dog => <MyDogCard refresh = {this.state.deleteDog} deleteDawg = {this.deleteDawg} dog={dog} key={dog.id} />)
+        this.state.mydogs.map(dog => <MyDogCard refresh = {this.state.deleteDog} deleteDawg = {this.deleteDawg} dog={dog} key={dog.id} />)
       }
       {this.state.render? <Redirect  to = "/userHome" />: null}
 
