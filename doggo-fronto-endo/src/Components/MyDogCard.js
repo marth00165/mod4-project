@@ -10,7 +10,7 @@ const MyDogCard  = props => {
             {dog.name}
           </div>
           <div>
-            <img src= {dog.image_url[0]} />
+            <img src= {dog.image_url} />
           </div>
           <button>Remove From List</button>
     </div>
