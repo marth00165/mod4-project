@@ -32,7 +32,7 @@ class Home extends Component {
     this.setState({
       search: search.toLowerCase()
     })
-    console.log(search)
+
 
   }
 
@@ -62,7 +62,7 @@ class Home extends Component {
       user_name: result.name,
       userID: result.id
     })
-    console.log(result)
+    
 
 
     fetch(breedsAPI)
@@ -91,7 +91,6 @@ render() {
         <br/>
         <br/>
         <DogContainer userID = {this.state.userID} user_name = {this.state.user_name} search = {this.state.search} dogs={this.state.allDogs} />
-        <MyPets userID = {this.state.userID}/>
       </div>
     )
   }
