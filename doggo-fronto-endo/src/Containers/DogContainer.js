@@ -8,6 +8,7 @@ const API = `http://localhost:3000/pets`
 
 
 
+
 export default class DogContainer extends React.Component {
  state = {
    renderForm : false,
@@ -21,9 +22,10 @@ export default class DogContainer extends React.Component {
       renderForm: true,
       dog: dog,
       userID: userID
-    })
 
+    })
   }
+
 
 
 
@@ -33,15 +35,9 @@ export default class DogContainer extends React.Component {
     let search = this.props.search
     let allDogs = this.props.dogs.filter(
       (dog) => {
-        return  dog.name.indexOf(search) != -1;
+        return dog.name.indexOf(search) != -1;
       }
     )
-
-
-
-
-
-
     return (
 
 
@@ -52,9 +48,7 @@ export default class DogContainer extends React.Component {
             dog: this.state.dog,
             userID: this.state.userID
     }}}/>: null}
-      <div className="Grid-Row">
         {allDogs.map(dog => <DogCard addDog = {this.addDog} user_name = {this.props.user_name} userID= {this.props.userID} key = {allDogs.indexOf(dog)} dog = {dog} />)}
-       </div>
     </div>
      )
    }
