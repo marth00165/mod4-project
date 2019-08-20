@@ -27,7 +27,7 @@ export default class AddDogForm extends Component {
         name: dogName,
         breed: dog.name,
         desc: desc,
-        image_url:dog.image_url,
+        image_url:dog.image_url[0],
         user_id:userID
       })
     })
