@@ -2,12 +2,14 @@ class UsersController < ApplicationController
 
     def index
         @users = User.all
-        render json: @users, except: [:created_at, :updated_at]
+        userRender = @users.map{|user| jawn = {id: user.id, name: user.name, age: user.age, username:user.username, dogs:user.pet}}
+        render json: userRender, except: [:created_at, :updated_at]
     end
 
     def show
         @user = User.find_by(id: params[:id])
-        render json: @user, except: [:created_at, :updated_at]
+        userRender = {id: @user.id, name:  @user.name, age: @user.age, username: @user.username, dogs: @user.pet}
+        render json: userRender, except: [:created_at, :updated_at]
     end
 
     def new
