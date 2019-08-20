@@ -27,6 +27,11 @@ class Home extends Component {
     window.localStorage.setItem("jwt", null)
   }
 
+  userHome = () =>
+  {
+    this.props.history.push("/mypets")
+  }
+
   updateSearch = (ev) => {
     let search = ev.target.value
     this.setState({
@@ -62,7 +67,7 @@ class Home extends Component {
       user_name: result.name,
       userID: result.id
     })
-    
+
 
 
     fetch(breedsAPI)
@@ -87,6 +92,8 @@ render() {
         </div>
         <div>
           <button onClick = {this.logOut}>Logout</button>
+        
+          <button onClick = {this.userHome}>My Dogs</button>
         </div>
         <br/>
         <br/>
