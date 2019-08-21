@@ -4,7 +4,7 @@ const MyDogCard  = props => {
 
   const {dog, deleteDawg, editDog} = props
 
-  
+
 
     return(
     <div className='dogCard' >
@@ -16,7 +16,7 @@ const MyDogCard  = props => {
           </div>
           <div>
           <button onClick = {() => deleteDawg(dog.id)}>Remove From List</button>
-          <button onClick = {() => editDog(dog.id)}>Edit Dog</button>
+          <button onClick = {() => editDog(dog.id)}>Edit Dog Info</button>
           </div>
     </div>
   )

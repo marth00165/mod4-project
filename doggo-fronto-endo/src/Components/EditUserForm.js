@@ -61,7 +61,7 @@ export default class EditUserForm extends Component {
         <input type = "text" id ="name" name = "dogName" ref = {node => {this.inputNode1 = node}}/> <br />
         <label htmlFor="password"> New Password </label> <br />
         <input type = "password" id = "desc" name = "desc" ref = {node => {this.inputNode2 = node}} /> <br />
-        <label htmlFor="password"> New Password </label> <br />
+        <label htmlFor="password"> Password Confirmation </label> <br />
         <input type = "password" id = "desc" name = "desc" ref = {node => {this.inputNode3 = node}} /> <br />
         <button type = "Submit">Edit Account!</button>
       </form>
