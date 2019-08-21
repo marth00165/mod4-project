@@ -21,6 +21,7 @@ export default class EditDogForm extends Component {
     fetch(`${API}/${dogID}`, {
       method: 'PATCH',
       headers: {
+        
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
