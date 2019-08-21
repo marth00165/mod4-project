@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import DogContainer from "../Containers/DogContainer";
 import DoginPage from "../Containers/DoginPage";
-import MyPets from "./MyPets"
+
 import jwtDecode from 'jwt-decode';
 const breedsAPI = "https://dog.ceo/api/breeds/list/all";
 const imageAPI = `https://dog.ceo/api/breed`;
@@ -25,6 +25,11 @@ class Home extends Component {
   logOut = () => {
     this.props.history.push("/")
     window.localStorage.setItem("jwt", null)
+  }
+
+  userHome = () =>
+  {
+    this.props.history.push("/mypets")
   }
 
   updateSearch = (ev) => {
@@ -62,7 +67,7 @@ class Home extends Component {
       user_name: result.name,
       userID: result.id
     })
-    
+
 
 
     fetch(breedsAPI)
@@ -87,6 +92,8 @@ render() {
         </div>
         <div>
           <button onClick = {this.logOut}>Logout</button>
+
+          <button onClick = {this.userHome}>My Dogs</button>
         </div>
         <br/>
         <br/>

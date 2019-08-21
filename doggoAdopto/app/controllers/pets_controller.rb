@@ -19,7 +19,17 @@ class PetsController < ApplicationController
     render json: @pet, except: [:created_at, :updated_at]
   end
 
+  def update
+    @pet = Pet.find_by(id: params[:id])
+    @pet.name = params[:name]
+    @pet.desc = params[:desc]
+    @pet.save
+    render json: @pet, except: [:created_at, :updated_at]
+
+  end
+
   def destroy
+
     @pet = Pet.find(params[:id])
     @pet.destroy
   end
