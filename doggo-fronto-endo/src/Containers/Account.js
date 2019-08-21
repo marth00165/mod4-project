@@ -1,0 +1,53 @@
+import React, {Component} from 'react'
+import jwtDecode from 'jwt-decode';
+const API = "http://localhost:3000/users/"
+
+class Account extends Component {
+
+  state = {
+    name: "",
+    username: "",
+    userID: undefined
+  }
+
+  componentDidMount = () => {
+    let jwt =  window.localStorage.getItem("jwt")
+    let result = jwtDecode(jwt);
+    console.log(result);
+
+    this.setState({
+      name: result.name,
+      username: result.username,
+      userID: result.id
+    })
+
+    fetch(`${API}${result.id}`)
+    .then(res => res.json())
+    .then(json => {
+      return console.log(json);
+    })
+  }
+
+  editUser = () => {
+    this.props.history.push("/editUser")
+  }
+
+
+  render() {
+    return (
+      <div>
+        <h1>My Account</h1>
+        <h4>Name: </h4>
+        <p>{this.state.name}</p>
+        <h4>Username: </h4>
+        <p>{this.state.username}</p>
+        <div>
+        <button onClick={this.editUser} >Edit User</button>
+
+        </div>
+      </div>
+    )
+  }
+}
+
+export default Account

@@ -25,7 +25,6 @@ class PetsController < ApplicationController
     @pet.desc = params[:desc]
     @pet.save
     render json: @pet, except: [:created_at, :updated_at]
-
   end
 
   def destroy
