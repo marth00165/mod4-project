@@ -1,48 +1,38 @@
-import React, {Component} from 'react'
-import MyDogCard from "../Components/MyDogCard"
-import {Redirect} from "react-router"
-import jwtDecode from 'jwt-decode';
-const API = `http://localhost:3000/pets`
-
-
-
-
+import React, { Component } from "react";
+import MyDogCard from "../Components/MyDogCard";
+import { Redirect } from "react-router";
+import jwtDecode from "jwt-decode";
+const API = `http://localhost:3000/pets`;
 
 class Pets extends Component {
-
-state = {
+  state = {
     render: false,
     mydogs: [],
     renderForm: false
-}
+  };
 
-componentDidMount = () => {
-  let jwt = window.localStorage.getItem("jwt");
-  let result = jwtDecode(jwt);
+  componentDidMount = () => {
+    let jwt = window.localStorage.getItem("jwt");
+    let result = jwtDecode(jwt);
 
-  let user_id = result.id
+    let user_id = result.id;
 
-  fetch(`http://localhost:3000/users/${user_id}`)
-    .then(res => res.json())
-    .then(json => {
-      this.setState({
-        mydogs: json.dogs
-      })
-    })
-}
-
-
-
+    fetch(`http://localhost:3000/users/${user_id}`)
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          mydogs: json.dogs
+        });
+      });
+  };
 
   userHome = () => {
     this.setState({
       render: true
-    })
-  }
+    });
+  };
 
-  deleteDawg = (dogID) => {
-
-
+  deleteDawg = dogID => {
     fetch(`${API}/${dogID}`, {
       method: "DELETE",
       headers: {
@@ -51,50 +41,53 @@ componentDidMount = () => {
       body: JSON.stringify({
         id: dogID
       })
-    })
-
-
+    });
 
     let filterDogs = this.state.mydogs.filter(dog => {
-      return  dog.id != dogID
-    })
+      return dog.id != dogID;
+    });
 
     this.setState({
       mydogs: [...filterDogs]
-    })
-  }
+    });
+  };
 
-  editDog = (dogID) => {
-    console.log("dog id", dogID)
+  editDog = dogID => {
+    console.log("dog id", dogID);
     this.setState({
       renderForm: true,
-      dogID: dogID,
-    })
+      dogID: dogID
+    });
+  };
 
-
-  }
-
-
-
-
-  render(){
+  render() {
     return (
-      <div>{
-        this.state.mydogs.map(dog => <MyDogCard refresh = {this.state.deleteDog} editDog = {this.editDog} deleteDawg = {this.deleteDawg} dog={dog} key={dog.id} />)
-      }
-      {this.state.render? <Redirect  to = "/userHome" />: null}
-      {this.state.renderForm? <Redirect  to = {
-        {pathname: "/editdog",
-        state: {
-              dogID: this.state.dogID,
+      <div>
+        {this.state.mydogs.map(dog => (
+          <MyDogCard
+            refresh={this.state.deleteDog}
+            editDog={this.editDog}
+            deleteDawg={this.deleteDawg}
+            dog={dog}
+            key={dog.id}
+          />
+        ))}
+        {this.state.render ? <Redirect to="/userHome" /> : null}
+        {this.state.renderForm ? (
+          <Redirect
+            to={{
+              pathname: "/editdog",
+              state: {
+                dogID: this.state.dogID
+              }
+            }}
+          />
+        ) : null}
 
-      }}}/>: null}
-
-
-      <button onClick = {this.userHome}>All Dogs</button>
+        <button onClick={this.userHome}>All Dogs</button>
       </div>
-    )
+    );
   }
 }
 
-export default Pets
+export default Pets;
