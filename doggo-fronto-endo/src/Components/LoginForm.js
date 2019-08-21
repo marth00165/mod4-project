@@ -42,25 +42,27 @@ export default class LoginForm extends Component{
           name: this.state.name,
           age: this.state.age
         })
-    }).then(res=> res.json()).then(res => res.success ? this.setState({
+    }).then(res=> res.json())
+    .then(res => res.success ? this.setState({
         redirect: true
-      }): res.data.username? this.setState({
+      }) : null)
+      .then(res=> res.data.username ? this.setState({
         displayUserNameError: true
-      }):res.data.age? this.setState({
+      }) : res.data.age? this.setState({
         displayAgeError: true
-      }): null )
-
-
-
-
+      }) : null ).catch(err=> {
+         this.setState({
+           redirect: true
+         })
+    })
   }
 
   render (){
     return (
       <div className="Login">
       {this.state.redirect? <Redirect  to = "/signin" />: null}
-      {this.state.displayUserNameError? <div> Username not Unique </div>: null}
-      {this.state.displayAgeError? <div> Need to be above 18 </div>: null}
+      {this.state.displayUserNameError ? <div> Username not Unique </div> : null}
+      {this.state.displayAgeError ? <div> Need to be above 18 </div> : null}
         <h2>This is Doggo Adopto</h2>
           <div>
             <input onChange = {this.handleChange} name = "name" type = "text" placeholder = "enter name" value = {this.state.name}/>

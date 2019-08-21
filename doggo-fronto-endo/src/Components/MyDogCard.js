@@ -2,7 +2,7 @@ import React from "react"
 
 const MyDogCard  = props => {
 
-  const {dog, deleteDawg, editDog} = props
+  const {dog} = props
 
     return(
     <div className='dogCard' >
@@ -10,12 +10,9 @@ const MyDogCard  = props => {
             {dog.name}
           </div>
           <div>
-            <img src= {dog.image_url} />
+            <img src= {dog.image_url[0]} />
           </div>
-          <div>
-          <button onClick = {() => deleteDawg(dog.id)}>Remove From List</button>
-          <button onClick = {() => editDog(dog.id)}>Edit Dog</button>
-          </div>
+          <button>Remove From List</button>
     </div>
   )
 }
