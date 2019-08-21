@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import "../App.css";
+import {Redirect} from "react-router"
 const API = `http://localhost:3000/users`
 
 export default class LoginForm extends Component{
@@ -8,7 +9,8 @@ export default class LoginForm extends Component{
     username: "",
     password: "",
     name: "",
-    age: 0
+    age: 0,
+    redirect: false
   }
 
   handleChange = ev => {
@@ -39,11 +41,16 @@ export default class LoginForm extends Component{
           age: this.state.age
         })
     })
+
+    this.setState({
+      redirect: true
+    })
   }
 
   render (){
     return (
       <div className="Login">
+      {this.state.redirect? <Redirect  to = "/signin" />: null}
         <h2>This is Doggo Adopto</h2>
           <div>
             <input onChange = {this.handleChange} name = "name" type = "text" placeholder = "enter name" value = {this.state.name}/>
