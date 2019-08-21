@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router";
+import Header from '../Components/Header';
 import jwtDecode from "jwt-decode";
 const API = "http://localhost:3000/users/";
 
@@ -49,6 +50,7 @@ class Account extends Component {
   render() {
     return (
       <div>
+        <Header /> 
         {this.state.render ? null : <Redirect to="/" />}
         <h1>My Account</h1>
         <h4>Name: </h4>

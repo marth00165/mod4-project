@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import DogContainer from "../Containers/DogContainer";
 import DoginPage from "../Containers/DoginPage";
-
+import Header from './Header';
 import jwtDecode from 'jwt-decode';
 const breedsAPI = "https://dog.ceo/api/breeds/list/all";
 const imageAPI = `https://dog.ceo/api/breed`;
@@ -84,6 +84,7 @@ class Home extends Component {
 render() {
     return (
       <div>
+        <Header /> 
         <div>
           <input type="text" placeholder="Enter Dog Breed" onChange ={this.updateSearch} />
         </div>

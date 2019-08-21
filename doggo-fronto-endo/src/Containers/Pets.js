@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MyDogCard from "../Components/MyDogCard";
+import Header from '../Components/Header';
 import { Redirect } from "react-router";
 import jwtDecode from "jwt-decode";
 const API = `http://localhost:3000/pets`;
@@ -63,6 +64,7 @@ class Pets extends Component {
   render() {
     return (
       <div>
+        <Header />
         {this.state.mydogs.map(dog => (
           <MyDogCard
             refresh={this.state.deleteDog}
