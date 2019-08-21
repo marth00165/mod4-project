@@ -12,13 +12,14 @@ class Pets extends Component {
 
 state = {
     render: false,
-    mydogs: []
+    mydogs: [],
+    renderForm: false
 }
 
 componentDidMount = () => {
   let jwt = window.localStorage.getItem("jwt");
   let result = jwtDecode(jwt);
-  console.log("result", result)
+
   let user_id = result.id
 
   fetch(`http://localhost:3000/users/${user_id}`)
@@ -62,12 +63,32 @@ componentDidMount = () => {
       mydogs: [...filterDogs]
     })
   }
+
+  editDog = (dogID) => {
+    console.log("dog id", dogID)
+    this.setState({
+      renderForm: true,
+      dogID: dogID,
+    })
+
+
+  }
+
+
+
+
   render(){
     return (
       <div>{
-        this.state.mydogs.map(dog => <MyDogCard refresh = {this.state.deleteDog} deleteDawg = {this.deleteDawg} dog={dog} key={dog.id} />)
+        this.state.mydogs.map(dog => <MyDogCard refresh = {this.state.deleteDog} editDog = {this.editDog} deleteDawg = {this.deleteDawg} dog={dog} key={dog.id} />)
       }
       {this.state.render? <Redirect  to = "/userHome" />: null}
+      {this.state.renderForm? <Redirect  to = {
+        {pathname: "/editdog",
+        state: {
+              dogID: this.state.dogID,
+
+      }}}/>: null}
 
 
       <button onClick = {this.userHome}>All Dogs</button>
