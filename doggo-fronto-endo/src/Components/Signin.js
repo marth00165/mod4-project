@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 
 export default class Signin extends Component {
 
+  state = {
+    invalid: false
+  }
+
   handleSubmit = (ev) => {
 
     ev.preventDefault();
@@ -26,7 +30,15 @@ export default class Signin extends Component {
     .then(data => window.localStorage.setItem("jwt", data.jwt))
     .then(() => this.props.history.push("/userHome"))
 
-    .catch(function(error){console.log("There is an error: ", error.message)});
+    .catch(
+
+    (error) => {
+      console.log("Error: ", error.message)
+      this.setState({
+        invalid: true
+      })
+    }
+  );
 
   }
 
@@ -34,6 +46,7 @@ export default class Signin extends Component {
     render(){
       return (
         <div>
+        {this.state.invalid? <div>Invalid UserName Password combination</div> : null}
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="username"> Username </label> <br />
             <input type = "text" id ="username" name = "username" ref = {node => {this.inputNode1 = node}}/> <br />
