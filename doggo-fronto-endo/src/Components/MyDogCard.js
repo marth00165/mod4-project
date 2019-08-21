@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const MyDogCard  = props => {
 
@@ -7,7 +7,8 @@ const MyDogCard  = props => {
 
 
     return(
-    <div className='dogCard' >
+    <div>
+      <div className='dogCard' >
           <div>
             {dog.name}
           </div>
@@ -15,9 +16,10 @@ const MyDogCard  = props => {
             <img src= {dog.image_url} />
           </div>
           <div>
-          <button onClick = {() => deleteDawg(dog.id)}>Remove From List</button>
-          <button onClick = {() => editDog(dog.id)}>Edit Dog Info</button>
+            <button onClick = {() => deleteDawg(dog.id)}>Remove From List</button>
+            <button onClick = {() => editDog(dog.id)}>Edit Dog Info</button>
           </div>
+      </div>
     </div>
   )
 }

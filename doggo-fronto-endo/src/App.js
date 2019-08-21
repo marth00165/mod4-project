@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
-import logo from "./logo.svg";
 import Home from "./Components/Home";
 import AddDogForm from "./Components/AddDogForm";
 import Pets from "./Containers/Pets"
