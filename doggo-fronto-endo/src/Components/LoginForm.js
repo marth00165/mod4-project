@@ -11,7 +11,8 @@ export default class LoginForm extends Component{
     name: "",
     age: 0,
     redirect: false,
-    displayError: false
+    displayUserNameError: false,
+    displayAgeError: false,
   }
 
   handleChange = ev => {
@@ -43,9 +44,13 @@ export default class LoginForm extends Component{
         })
     }).then(res=> res.json()).then(res => res.success ? this.setState({
         redirect: true
-      }): this.setState({
-        displayError: true
-      }) )
+      }): res.data.username? this.setState({
+        displayUserNameError: true
+      }):res.data.age? this.setState({
+        displayAgeError: true
+      }): null )
+
+
 
 
   }
@@ -54,7 +59,8 @@ export default class LoginForm extends Component{
     return (
       <div className="Login">
       {this.state.redirect? <Redirect  to = "/signin" />: null}
-      {this.state.displayError? <div> Username not Unique or age not above 18 </div>: null}
+      {this.state.displayUserNameError? <div> Username not Unique </div>: null}
+      {this.state.displayAgeError? <div> Need to be above 18 </div>: null}
         <h2>This is Doggo Adopto</h2>
           <div>
             <input onChange = {this.handleChange} name = "name" type = "text" placeholder = "enter name" value = {this.state.name}/>
