@@ -42,6 +42,7 @@ export default class EditUserForm extends Component {
           password: password1
         })
       })
+      .then(this.props.history.push("/account"))
     } else {
       this.setState({
         passwordError: true
