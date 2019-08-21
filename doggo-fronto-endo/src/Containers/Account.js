@@ -16,16 +16,14 @@ class Account extends Component {
     let result = jwtDecode(jwt);
     console.log(result);
 
-    this.setState({
-      name: result.name,
-      username: result.username,
-      userID: result.id
-    });
 
     fetch(`${API}${result.id}`)
       .then(res => res.json())
       .then(json => {
-        return console.log(json);
+        this.setState({
+          name: json.name,
+          username: json.username
+        });
       });
   };
 
