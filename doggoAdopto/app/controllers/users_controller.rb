@@ -18,13 +18,15 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(
+        @user = User.new(
             name: params[:name],
             username: params[:username],
             age: params[:age],
             password: params[:password]
         )
-        render json: @user, except: [:created_at, :updated_at]
+        if @user.save
+          render json: @user, except: [:created_at, :updated_at]
+        end
     end
 
     def destroy
