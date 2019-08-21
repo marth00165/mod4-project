@@ -8,7 +8,8 @@ import EditDogForm from "./Components/EditDogForm"
 import HomePage from "./Components/HomePage"
 import Signin from "./Components/Signin";
 import DoginPage from "./Containers/DoginPage";
-
+import Account from "./Containers/Account";
+import EditUserForm from './Components/EditUserForm';
 import "./App.css";
 
 
@@ -29,6 +30,8 @@ class App extends Component {
           <Route path = "/userHome" exact component = {Home} />
           <Route path = "/signup" exact component = {DoginPage} />
           <Route path = "/editDog" exact component = {EditDogForm} />
+          <Route path = "/account" exact component = {Account} />
+          <Route path = "/editUser" exact component = {EditUserForm} />
         </Switch>
       </BrowserRouter>
 

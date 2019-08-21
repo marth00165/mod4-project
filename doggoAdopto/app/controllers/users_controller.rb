@@ -33,6 +33,14 @@ class UsersController < ApplicationController
           end
     end
 
+    def update
+      @user = User.find_by(id: params[:id])
+      @user.name = params[:name]
+      @user.password = params[:password]
+      @user.save
+      render json: @user, except: [:created_at, :updated_at]
+    end
+
     def destroy
       @user = User.find(params[:id])
       @user.destroy
