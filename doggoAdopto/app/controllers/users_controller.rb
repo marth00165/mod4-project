@@ -26,7 +26,11 @@ class UsersController < ApplicationController
         )
         if @user.save
           render json: @user, except: [:created_at, :updated_at]
-        end
+
+      else
+        puts "in error block"
+        render json: {message: "There was an error", success: false, data: @user.errors}, status: 406
+          end
     end
 
     def destroy
