@@ -4,6 +4,8 @@ const MyDogCard  = props => {
 
   const {dog} = props
 
+  
+
     return(
     <div className='dogCard' >
           <div>
