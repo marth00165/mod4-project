@@ -85,8 +85,6 @@ class Pets extends Component {
             }}
           />
         ) : null}
-
-        <button onClick={this.userHome}>All Dogs</button>
       </div>
     );
   }

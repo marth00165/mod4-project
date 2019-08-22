@@ -7,16 +7,15 @@ const DogCard  = props => {
     return(
     <div className='dogCard' >
           <div>
+            <h2>{dog.name.toUpperCase()}</h2>
+          </div>
+          <div>
             <img src= {dog.image_url[0]} />
             <img src= {dog.image_url[1]} />
             <img src= {dog.image_url[2]} />
           </div>
           <div>
-            {dog.name}
-          </div>
-          <div>
             <button onClick = {() => addDog(dog,userID)}>Add Dog</button>
-            <button onClick = {() => console.log("Use a callback function or pass it down as props?")}>More Info</button>
           </div>
     </div>
   )

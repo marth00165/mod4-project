@@ -13,7 +13,7 @@ export default class Signin extends Component {
 
     let username = this.inputNode1.value;
     let password = this.inputNode2.value;
-    debugger;
+
     fetch("http://localhost:3000/tokens",
     {method: "POST",
       headers: {
@@ -41,7 +41,6 @@ export default class Signin extends Component {
   );
 
   }
-
 
     render(){
       return (
