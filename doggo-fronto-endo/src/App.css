@@ -9,7 +9,6 @@ html {
   }
 
   .mainContainer {
-
     margin: 0 auto;
     max-width: 320px;
   }
@@ -22,4 +21,8 @@ img {
   padding: 5px;
   width: 150px;
   height: 150px;  
+}
+
+a {
+  color: #FEF6C9;
 }

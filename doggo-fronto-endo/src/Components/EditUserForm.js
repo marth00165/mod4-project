@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Header from './Header';
 import jwtDecode from 'jwt-decode';
 
 const API = `http://localhost:3000/users`
@@ -55,16 +56,17 @@ export default class EditUserForm extends Component {
   render(){
     return(
       <div>
+        <Header/>
         {this.state.passwordError ? <div> Passwords don't match </div> : null }
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="name"> Update Name </label> <br />
-        <input type = "text" id ="name" name = "dogName" ref = {node => {this.inputNode1 = node}}/> <br />
-        <label htmlFor="password"> New Password </label> <br />
-        <input type = "password" id = "desc" name = "desc" ref = {node => {this.inputNode2 = node}} /> <br />
-        <label htmlFor="password"> Password Confirmation </label> <br />
-        <input type = "password" id = "desc" name = "desc" ref = {node => {this.inputNode3 = node}} /> <br />
-        <button type = "Submit">Edit Account!</button>
-      </form>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="name"> Update Name </label> <br />
+          <input type = "text" id ="name" name = "dogName" ref = {node => {this.inputNode1 = node}}/> <br />
+          <label htmlFor="password"> New Password </label> <br />
+          <input type = "password" id = "desc" name = "desc" ref = {node => {this.inputNode2 = node}} /> <br />
+          <label htmlFor="password"> Password Confirmation </label> <br />
+          <input type = "password" id = "desc" name = "desc" ref = {node => {this.inputNode3 = node}} /> <br />
+          <button type = "Submit">Edit Account!</button>
+        </form>
       </div>
 
     )

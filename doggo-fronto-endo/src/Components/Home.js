@@ -84,20 +84,15 @@ class Home extends Component {
 render() {
     return (
       <div>
-        <Header /> 
+        <Header logOut={this.logOut} /> 
         <div>
           <input type="text" placeholder="Enter Dog Breed" onChange ={this.updateSearch} />
         </div>
         <div>
-          <h1>Hello {this.state.user_name}</h1>
+          <h1>Hello {this.state.user_name}!</h1>
         </div>
-        <div>
-          <button onClick = {this.logOut}>Logout</button>
-
-          <button onClick = {this.userHome}>My Dogs</button>
-        </div>
-        <br/>
-        <br/>
+          <br/>
+          <br/>
         <DogContainer userID = {this.state.userID} user_name = {this.state.user_name} search = {this.state.search} dogs={this.state.allDogs} />
       </div>
     )

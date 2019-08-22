@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Header from './Header';
 const API = `http://localhost:3000/pets`
 
 
@@ -41,13 +42,14 @@ export default class AddDogForm extends Component {
   render(){
     return(
       <div>
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="dogName"> Name Your Dog </label> <br />
-        <input type = "text" id ="dogName" name = "dogName" ref = {node => {this.inputNode1 = node}}/> <br />
-        <label htmlFor="desc"> Write Something Nice About your new dog! </label> <br />
-        <input type = "textarea" id = "desc" name = "desc" ref = {node => {this.inputNode2 = node}} /> <br />
-        <button type = "Submit">Add Dog!</button>
-      </form>
+        <Header />
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="dogName"> Name Your Dog </label> <br />
+          <input type = "text" id ="dogName" name = "dogName" ref = {node => {this.inputNode1 = node}}/> <br />
+          <label htmlFor="desc"> Write Something Nice About your new dog! </label> <br />
+          <input type = "textarea" id = "desc" name = "desc" ref = {node => {this.inputNode2 = node}} /> <br />
+          <button type = "Submit">Add Dog!</button>
+        </form>
       </div>
 
     )
