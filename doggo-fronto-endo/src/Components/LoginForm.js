@@ -63,20 +63,27 @@ export default class LoginForm extends Component{
       {this.state.redirect? <Redirect  to = "/signin" />: null}
       {this.state.displayUserNameError ? <div> Username not Unique </div> : null}
       {this.state.displayAgeError ? <div> Need to be above 18 </div> : null}
-        <h2>This is Doggo Adopto</h2>
+          <header className='homePageHeader'>
+            <h1> 🐾 Welcome to Doggo Adopto! 🐾 </h1>
+           </header>
           <div>
+            <h3>Enter Name </h3>
             <input onChange = {this.handleChange} name = "name" type = "text" placeholder = "enter name" value = {this.state.name}/>
           </div>
           <div>
+            <h3>Enter Username</h3> 
             <input onChange = {this.handleChange} name = "username" type = "text" placeholder = "enter username" value = {this.state.username}/>
           </div>
           <div>
+            <h3>Enter Age</h3>
             <input onChange = {this.handleChange} name = "age" type = "number" placeholder = "enter age" value = {this.state.age}/>
           </div>
           <div>
+            <h3>Enter Password</h3> 
             <input onChange = {this.handleChange} name = "password" type = "password" placeholder = "enter password" value = {this.state.password}/>
           </div>
           <div>
+            <h3>Re-enter Password </h3>
             <input onClick = {this.handleCreate} type="button" value ="Create User"/>
           </div>
       </div>

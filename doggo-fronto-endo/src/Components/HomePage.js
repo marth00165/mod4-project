@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import dvdoggo from '../dvdoggo.jpg'
 
 export default class HomePage extends Component {
 
@@ -16,11 +16,21 @@ export default class HomePage extends Component {
 render(){
   return (
     <div>
-    Welcome to Dog Adopter
+    <header className='homePageHeader'>
+      <h1> 🐾 Welcome to Doggo Adopto! 🐾 </h1>
+    </header>
+    <br></br>
+    <br></br>
+    <div>
+      <img className="dogImg1" src={dvdoggo} />
+    </div>
+    <div>
+
       <div>
-        <button onClick = {this.handleLogin}>Login</button>
-        <button onClick = {this.handleSignUp}>SignUp</button>
+        <button onClick = {this.handleLogin} class="btn striped-shadow white"><span>Login </span></button>
+        <button onClick = {this.handleSignUp} class="btn striped-shadow blue"><span>Sign Up!</span></button>
       </div>
+    </div>
     </div>
   )}
 }
