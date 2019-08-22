@@ -13,6 +13,7 @@ function Header(props){
         </header>
     )
 }
+
 const headerStyle = {
     background: '#586F7C',
     color: '#fff',
