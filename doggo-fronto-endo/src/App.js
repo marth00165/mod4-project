@@ -9,6 +9,7 @@ import Signin from "./Components/Signin";
 import DoginPage from "./Containers/DoginPage";
 import Account from "./Containers/Account";
 import EditUserForm from './Components/EditUserForm';
+import About from "./Components/About";
 import "./App.css";
 
 
@@ -23,6 +24,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route path = "/" exact component = {HomePage} />
+          <Route path = "/about" exact component = {About} />
           <Route path = "/mypets" exact component = {Pets} />
           <Route path = "/addDogForm" exact component = {AddDogForm} />
           <Route path = "/signin" exact component = {Signin} />
