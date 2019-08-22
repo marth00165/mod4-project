@@ -26,3 +26,20 @@ img {
 a {
   color: #FEF6C9;
 }
+
+.dogImg1 {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 25%;
+  height: 25%;
+}
+
+.dogImg2, .dogImg3 {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 300px;
+  height: 350px;
+}
+

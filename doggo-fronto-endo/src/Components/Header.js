@@ -5,7 +5,8 @@ function Header(props){
     return (
         <header style={headerStyle}>
             <h1> 🐾 Doggo Adopto 🐾 </h1>
-            <Link to='/userHome'>Home</Link> 
+            <Link to='/about'>About</Link>
+            | <Link to='/userHome'>Home</Link> 
             | <Link to='/mypets'>My Pets</Link>
             | <Link to='/account'>Account Settings</Link>
             | <Link onClick={props.logOut}>Log Out </Link>
@@ -20,3 +21,5 @@ const headerStyle = {
   
   }
 export default Header;
+
+
