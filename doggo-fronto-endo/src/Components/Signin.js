@@ -45,13 +45,17 @@ export default class Signin extends Component {
     render(){
       return (
         <div>
+          <header className='homePageHeader'>
+            <h1> 🐾 Welcome to Doggo Adopto! 🐾 </h1>
+           </header>
+
         {this.state.invalid? <div>Invalid UserName Password combination</div> : null}
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="username"> Username </label> <br />
             <input type = "text" id ="username" name = "username" ref = {node => {this.inputNode1 = node}}/> <br />
             <label htmlFor="password"> Password </label> <br />
             <input type = "password" id = "password" name = "password" ref = {node => {this.inputNode2 = node}} /> <br />
-            <button type = "Submit">Sign In</button>
+            <button type = "Submit" class="btn striped-shadow blue"><span>Login</span></button>
           </form>
         </div>
     )
