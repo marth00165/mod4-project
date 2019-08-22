@@ -16,7 +16,7 @@ function Header(props){
 
 const headerStyle = {
     background: '#586F7C',
-    color: '#fff',
+    color: '#CCC7B9',
     textAlign: 'center',
     padding: '10px'
   
